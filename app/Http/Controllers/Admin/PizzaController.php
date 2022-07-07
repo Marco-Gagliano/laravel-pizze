@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\PizzaRequest;
 use App\Pizza;
 
 class PizzaController extends Controller
@@ -40,7 +41,7 @@ class PizzaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PizzaRequest $request)
     {
         $data = $request->all();
 
@@ -103,7 +104,7 @@ class PizzaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pizza $pizza)
+    public function update(PizzaRequest $request, Pizza $pizza)
     {
         $data = $request->all();
         $data['slug'] = Pizza::generate_Slug($data['name']);
