@@ -20,8 +20,14 @@
                     <td>{{$pizza->name}}</td>
                     <td>
                         <a class="btn btn-primary" href="{{route ('admin.pizzas.show', $pizza)}}">MOSTRA</a>
-                        <a class="btn btn-warning mx-3" href="#">MODIFICA</a>
-                        <a class="btn btn-danger" href="">CANCELLA</a>
+                        <a class="btn btn-warning mx-3" href="{{route ('admin.pizzas.edit', $pizza)}}">MODIFICA</a>
+                        <form   class="d-inline"
+                                onsubmit="return confirm('Sei sicuro di voler cancellare {{$pizza->name}}?')"
+                                action="{{route('admin.pizzas.destroy', $pizza)}}"
+                                method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <input type="submit" class="btn btn-danger" value="CANCELLA"></form>
                     </td>
 
                 </tr>
