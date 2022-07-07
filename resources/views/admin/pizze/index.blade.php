@@ -20,7 +20,7 @@
                     <td>{{$pizza->name}}</td>
                     <td>
                         <a class="btn btn-primary" href="{{route ('admin.pizzas.show', $pizza)}}">MOSTRA</a>
-                        <a class="btn btn-warning mx-3" href="">MODIFICA</a>
+                        <a class="btn btn-warning mx-3" href="#">MODIFICA</a>
                         <a class="btn btn-danger" href="">CANCELLA</a>
                     </td>
 

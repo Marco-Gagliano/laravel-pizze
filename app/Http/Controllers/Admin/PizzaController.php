@@ -29,7 +29,7 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.pizze.create');
     }
 
 
@@ -42,7 +42,21 @@ class PizzaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        if ($data['isVegetarian'] == "sì"){
+            $data['isVegetarian'] = 1;
+        }else{
+            $data['isVegetarian'] = 0;
+        };
+
+        $data['slug'] = Pizza::generate_Slug($data['name']);
+        $pizza = new Pizza();
+
+        $pizza->fill($data);
+        $pizza->save();
+
+        return redirect()->route('admin.pizzas.show', compact ('pizza'));
     }
 
 
@@ -55,9 +69,9 @@ class PizzaController extends Controller
      */
     public function show($id)
     {
-        $pizze = Pizza::find($id);
+        $pizza = Pizza::find($id);
 
-        return view('admin.pizze.show', compact ('pizze'));
+        return view('admin.pizze.show', compact ('pizza'));
     }
 
 

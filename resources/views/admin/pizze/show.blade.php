@@ -5,11 +5,11 @@
     <div class="container">
         <div class="ror">
             <div class="col">
-                <h1>{{$pizza->name}}</h1>
-                <p>{{$pizza->description}}</p>
-                <p>{{$pizza->price}}</p>
-                <p>{{$pizza->popularity}}</p>
-                <p>{{$pizza->isVegetarian}}</p>
+                <h1>Nome Pizza: {{$pizza->name}}</h1>
+                <p>Ingredienti: {{$pizza->description}}</p>
+                <p>Prezzo: {{$pizza->price}}</p>
+                <p>Popolarità: {{$pizza->popularity == null ? 'NC' : $pizza->popularity}}</p>
+                <p>Vegetariana: {{$pizza->isVegetarian == 0 ? 'no' : 'sì'}}</p>
             </div>
         </div>
     </div>
